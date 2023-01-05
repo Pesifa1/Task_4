@@ -7,6 +7,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
@@ -25,13 +26,18 @@ public class GuiController {
 
     final private float TRANSLATION = 0.5F;
 
+
     @FXML
     AnchorPane anchorPane;
 
     @FXML
     private Canvas canvas;
 
+    @FXML
+    private CheckBox checkTexture;
+
     private Model mesh = null;
+    private Model meshTriangulate = null;
 
     private Camera camera = new Camera(
             new Vector3f(0, 00, 100),
@@ -48,7 +54,7 @@ public class GuiController {
         timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
 
-        KeyFrame frame = new KeyFrame(Duration.millis(15), event -> {
+        KeyFrame frame = new KeyFrame(Duration.millis(10), event -> {
             double width = canvas.getWidth();
             double height = canvas.getHeight();
 
@@ -56,7 +62,11 @@ public class GuiController {
             camera.setAspectRatio((float) (width / height));
 
             if (mesh != null) {
-                RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
+                if(checkTexture.isSelected()) {
+                    RenderEngine.render(canvas.getGraphicsContext2D(), camera, meshTriangulate, (int) width, (int) height);
+                } else {
+                    RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
+                }
             }
         });
 
@@ -80,6 +90,10 @@ public class GuiController {
         try {
             String fileContent = Files.readString(fileName);
             mesh = ObjReader.read(fileContent);
+
+            meshTriangulate = new Model(mesh.vertices, mesh.textureVertices, mesh.normals, mesh.polygons);
+            meshTriangulate.triangulate();
+
             // todo: обработка ошибок
         } catch (IOException exception) {
 
