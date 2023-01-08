@@ -1,6 +1,47 @@
 package com.cgvsu.math.vector;
 
-public class Vector3 extends Vector {
+public class Vector3{
+    // extends Vector {
+
+    public float x, y, z;
+
+    public Vector3(float x, float y, float z ) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public float getX() {
+        return this.x;
+    }
+
+    public float getY() {
+        return this.y;
+    }
+
+    public  float getZ() {
+        return z;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
     private static final int n = 3;
     private static final int scalar = 6;
 
@@ -46,4 +87,9 @@ public class Vector3 extends Vector {
         return result;
     }
 
+    public static float[][] columnVector3(Vector3 vector) {
+        return columnVector(vector, n);
+    }
+
+     */
 }

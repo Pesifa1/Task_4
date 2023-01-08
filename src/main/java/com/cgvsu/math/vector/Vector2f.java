@@ -2,48 +2,43 @@ package com.cgvsu.math.vector;
 
 // Это заготовка для собственной библиотеки для работы с линейной алгеброй
 public class Vector2f {
-
-    public Vector2f(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public float x, y;
-
-    public static Vector2f sumVectors2(Vector2f vec1, Vector2f vec2) {
-        Vector2f res = new Vector2f(vec1.x + vec2.x, vec1.y + vec2.y);
+    public Vector2 sumOfVectors(Vector2 v1, Vector2 v2) {
+        Vector2 res = new Vector2(v1.getX() + v2.getX(), v1.getY() + v2.getY());
         return res;
     }
 
-    public static Vector2f subtractVectors2(Vector2f vec1, Vector2f vec2) {
-        Vector2f res = new Vector2f(vec1.x - vec2.x, vec1.y - vec2.y);
+    public Vector2 diffOfVectors(Vector2 v1, Vector2 v2) {
+        Vector2 res = new Vector2(v1.getX() - v2.getX(), v1.getY() - v2.getY());
         return res;
     }
 
-    public static Vector2f multiplicationVectors2ByScalar(Vector2f vec1, float n) {
-        Vector2f res = new Vector2f(vec1.x * n, vec1.y * n);
+    public Vector2 increaseVectorOnNumber(Vector2 v1, float n) {
+        Vector2 res = new Vector2(v1.getX() * n, v1.getY() * n);
         return res;
     }
 
-    public static Vector2f divisionVectors2ByScalar(Vector2f vec1, float n) {
-        if (n == 0){
-            System.out.println("Ошибка! На ноль делить нельзя!");
+    public Vector2 divisionVectorOnNumber(Vector2 v1, float n) {
+        if(n == 0) {
+            System.out.println("На 0 делить нельзя");
+            return null;
         }
-        Vector2f res = new Vector2f(vec1.x / n, vec1.y / n);
+        Vector2 res = new Vector2(v1.getX() / n, v1.getY() / n);
         return res;
     }
 
-    public static float lengthVectors2(Vector2f vec1) {
-        return (float) Math.sqrt((vec1.x * vec1.x) + (vec1.y * vec1.y));
+    public float lengthOfVector(Vector2 v1) {
+        return (float) Math.sqrt(v1.getX() * v1.getX() + v1.getY() * v1.getY());
     }
 
-    public static Vector2f normalizationVectors2(Vector2f vec1) {
-        float leg = lengthVectors2(vec1);
-        vec1 = divisionVectors2ByScalar(vec1, leg);
-        return vec1;
+    public float scalarProduct(Vector2 v1, Vector2 v2) {
+        return v1.getX() * v2.getX() + v1.getY() * v2.getY();
     }
 
-    public static float dotProductVectors2(Vector2f vec1, Vector2f vec2) {
-        return vec1.x * vec2.x + vec1.y * vec2.y;
+    public Vector2 normalization(Vector2 v1) {
+        float invLength = (float) (1 / (Math.sqrt(v1.getX() * v1.getX() + v1.getY() * v1.getY())));
+
+        Vector2 res = new Vector2(v1.getX() * invLength, v1.getY() * invLength);
+        return res;
     }
+
 }

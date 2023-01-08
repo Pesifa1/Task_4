@@ -57,8 +57,18 @@ public class Camera {
 
     private Vector3f position;
     private Vector3f target;
-    private float fov;
+    private final float fov;
     private float aspectRatio;
-    private float nearPlane;
-    private float farPlane;
+    private final float nearPlane;
+    private final float farPlane;
+
+
+
+
+
+
+
+
+
+
 }

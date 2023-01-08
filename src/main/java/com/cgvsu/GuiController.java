@@ -1,13 +1,21 @@
 package com.cgvsu;
 
+import com.cgvsu.math.affine_transformations.affine;
 import com.cgvsu.render_engine.RenderEngine;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
@@ -23,7 +31,7 @@ import com.cgvsu.render_engine.Camera;
 
 public class GuiController {
 
-    final private float TRANSLATION = 0.5F;
+    final private float TRANSLATION = 1;
 
     @FXML
     AnchorPane anchorPane;
@@ -33,8 +41,24 @@ public class GuiController {
 
     private Model mesh = null;
 
+    /*
+    @FXML
+    private TextField a;
+    @FXML
+    private TextField b;
+    @FXML
+    private TextField sumaandb;
+
+    @FXML
+    private Button suma;
+
+
+    affine view = new affine();
+
+     */
+
     private Camera camera = new Camera(
-            new Vector3f(0, 00, 100),
+            new Vector3f(0, 0, 100),
             new Vector3f(0, 0, 0),
             1.0F, 1, 0.01F, 100);
 
@@ -59,10 +83,27 @@ public class GuiController {
                 RenderEngine.render(canvas.getGraphicsContext2D(), camera, mesh, (int) width, (int) height);
             }
         });
-
         timeline.getKeyFrames().add(frame);
         timeline.play();
+        /*
+
+        int aa = Integer.parseInt(a.getText());
+        int bb = Integer.parseInt(b.getText());
+
+
+        suma.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                int aInt = moveXplus(aa, bb);
+                String aString = Integer.toString(aInt);
+                sumaandb.setText(aString);
+
+            }
+        });
+
+         */
     }
+
 
     @FXML
     private void onOpenModelMenuItemClick() {
@@ -115,4 +156,7 @@ public class GuiController {
     public void handleCameraDown(ActionEvent actionEvent) {
         camera.movePosition(new Vector3f(0, -TRANSLATION, 0));
     }
+
+
+
 }

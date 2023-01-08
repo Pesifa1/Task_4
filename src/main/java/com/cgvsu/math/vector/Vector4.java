@@ -1,39 +1,30 @@
 package com.cgvsu.math.vector;
 
-public class Vector4 extends Vector {
+public class Vector4 {
 
-    private static final int n = 4;
-    private static final int scalar = 6;
+    private float x, y, z, k;
 
-    public Vector4(float[] vector) {
-        super(vector);
+    public Vector4(float x, float y, float z, float k) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.k = k;
     }
 
-    public static float[] sumVectors4(Vector4 first, Vector4 second) {
-        return sumVectors(first, second, n);
+    public float getX() {
+        return this.x;
     }
 
-    public static float[] subtractVectors4(Vector4 first, Vector4 second) {
-        return subtractVectors(first, second, n);
+    public float getY() {
+        return this.y;
     }
 
-    public static float[] multiplyVectors4ToScalar(Vector4 vector, float scalar) {
-        return multiplyVectorToScalar(vector, n, scalar);
+    public  float getZ() {
+        return z;
     }
 
-    public static float[] divideVector4ByScalar(Vector4 vector, float scalar) {
-        return divideVectorByScalar(vector, n, scalar);
+    public float getK() {
+        return k;
     }
 
-    public static float countVector4Length(Vector4 vector) {
-        return countVectorLength(vector, n);
-    }
-
-    public static float[] normalizeVector4(Vector4 vector) {
-        return normalizeVector(vector, n);
-    }
-
-    public static float scalarMultiplyVectors4(Vector4 first, Vector4 second) {
-        return scalarMultiplyVectors(first, second, n);
-    }
 }
