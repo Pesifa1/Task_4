@@ -8,19 +8,6 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class affine {
 
-
-    /*
-    public static void print (float[][] arr){
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                System.out.print(arr[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-     */
-
     /**
      * Масштабирование (Scale)
      * Поворот (Rotation)
@@ -34,7 +21,6 @@ public class affine {
                 {0, 0, vS.getZ(), 0},
                 {0, 0, 0, 1}
         };
-        //Matrix3.printMatrix3(matrix);
         return new Matrix4(matrix);
     }
 
@@ -51,7 +37,6 @@ public class affine {
                 {-sinY, sinX * cosY, cosX * cosY, 0},
                 {0, 0, 0, 1}
         };
-        //Matrix3.printMatrix3(matrix);
         return new Matrix4(matrix);
     }
 
@@ -62,7 +47,6 @@ public class affine {
                 {0, 0, 1, vT.getZ()},
                 {0, 0, 0, 1}
         };
-        Matrix3.printMatrix3(matrix);
         return new Matrix4(matrix);
     }
 

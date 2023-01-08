@@ -63,12 +63,4 @@ public class Camera {
     private final float farPlane;
 
 
-
-
-
-
-
-
-
-
 }

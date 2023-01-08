@@ -7,16 +7,16 @@ public class Matrix3{
     public Matrix3(float[][] matrix) {
     }
 
+    /*
     public static void printMatrix3(float[][] matrix) {
         for(int i = 0; i < matrix.length; i++){
             for(int j = 0; j < matrix[i].length; j++){
                 System.out.print(matrix[i][j] + " ");
-
             }
             System.out.println();
 
         }
-    }
+    }*/
 
     public float[][] sumOfDoubleMatrix(float[][] matrix1, float[][] matrix2) {
         float[][] matrixResult = new float[3][3];

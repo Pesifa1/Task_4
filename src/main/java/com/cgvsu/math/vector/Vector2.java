@@ -17,7 +17,4 @@ public class Vector2 {
         return this.y;
     }
 
-
-
-
 }

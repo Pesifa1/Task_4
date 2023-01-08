@@ -36,7 +36,6 @@ public class Vector2f {
 
     public Vector2 normalization(Vector2 v1) {
         float invLength = (float) (1 / (Math.sqrt(v1.getX() * v1.getX() + v1.getY() * v1.getY())));
-
         Vector2 res = new Vector2(v1.getX() * invLength, v1.getY() * invLength);
         return res;
     }

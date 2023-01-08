@@ -26,5 +26,4 @@ public class Vector4 {
     public float getK() {
         return k;
     }
-
 }
