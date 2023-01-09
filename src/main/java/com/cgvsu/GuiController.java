@@ -1,6 +1,5 @@
 package com.cgvsu;
 
-import com.cgvsu.misc.ToggleSwitch;
 import com.cgvsu.model.ChangedModel;
 import com.cgvsu.model.Model;
 import com.cgvsu.model.Polygon;
@@ -75,9 +74,6 @@ public class GuiController {
     private Canvas canvas;
 
     @FXML
-    private MenuButton menuButton;
-
-    @FXML
     private ListView<UIModel> listView;
 
     private int numberCamera = 0;
@@ -115,32 +111,6 @@ public class GuiController {
             currentUIModel.set(null);
         });
 
-
-        FileInputStream input = null;
-        try {
-            input = new FileInputStream("src/main/resources/com/cgvsu/fxml/image/ico.png");
-            Image image = new Image(input);
-            ImageView imageView = new ImageView(image);
-            menuButton.setGraphic(imageView);
-        } catch (FileNotFoundException e) {
-            new DialogException("Wrong menuButton filepath!");
-        }
-
-        menuButton.setStyle("-fx-mark-color: transparent");
-        menuButton.setShape(new Circle());
-
-        ToggleSwitch button = new ToggleSwitch();
-        SimpleBooleanProperty turn = button.switchOnProperty();
-        turn.addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                button.getScene().getRoot().getStylesheets().add(Objects.requireNonNull(getClass().getResource("fxml/styles/style.css")).toString());
-            } else {
-                button.getScene().getRoot().getStylesheets().remove(Objects.requireNonNull(getClass().getResource("fxml/styles/style.css")).toString());
-            }
-
-        });
-
-        changeTheme.getChildren().add(button);
         timeline = new Timeline();
         timeline.setCycleCount(Animation.INDEFINITE);
         //It's better to change. Updating every 15 millis aren't well.
@@ -166,15 +136,6 @@ public class GuiController {
                 Point2f minP = model.getMinPoint2f();
                 Point2f maxP = model.getMaxPoint2f();
                 a.setSize(minP, maxP);
-            }
-            if (isClickedOnModel) {
-                Border b = currentUIModel.get().getBorder();
-                canvas.getGraphicsContext2D().strokeRect(
-                        b.getScale().x,
-                        b.getScale().y,
-                        b.getWidth(),
-                        b.getHeight()
-                );
             }
         });
 
